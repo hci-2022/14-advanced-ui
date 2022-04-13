@@ -25,7 +25,11 @@ header {
 #store {
   padding: 12px;
   color: inherit;
-  background: inherit;
+  background: #EEE;
+}
+
+.js #store {
+  position: absolute;
 }
 
 #products {

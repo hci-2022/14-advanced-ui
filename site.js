@@ -1,5 +1,5 @@
 // TODO: Uncomment this line when JavaScript-less styles have been written
-// document.querySelector('html').className = 'js';
+document.querySelector('html').className = 'js';
 
 /*
   Add-to-cart callbacks, logic, calculations, and events
