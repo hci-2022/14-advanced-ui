@@ -11,6 +11,17 @@ store.addEventListener('click', handleAddToCartButtonClicks);
 function handleAddToCartButtonClicks(event) {
   const button = event.target;
   if (button.tagName !== 'BUTTON') return;
+  const item = button.parentElement;
+  const itemData = {}
+  console.log(item.dataset); // LI
+
+  for (var key in item.dataset) {
+    itemData[key] = item.dataset[key];
+  }
+
+  itemData.name = item.querySelector('h3').innerText;
+
+  console.log(itemData);
 }
 
 
