@@ -35,6 +35,7 @@ header {
 
 .js #store {
   position: absolute;
+  width: 100%;
 }
 
 .js #store.moved {
