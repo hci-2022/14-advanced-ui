@@ -22,8 +22,11 @@ function lineItemSubtotal(wholeUnitPrice, quantity) {
 
 }
 
-function formatCurrency(wholeUnitValue, symbol) {
-
+function formatCurrency(wholeUnitValue) {
+  var currencySymbol = '$';
+  var humanAmount = wholeUnitValue + "";
+  humanAmount = humanAmount.replace(/(\d\d)$/, '.$1');
+  return currencySymbol + humanAmount;
 }
 
 
