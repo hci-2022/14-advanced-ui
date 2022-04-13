@@ -38,7 +38,6 @@ header {
   padding: 12px;
   border: 1px solid #CCC;
   display: flex;
-  height: 100%;
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: flex-start;
