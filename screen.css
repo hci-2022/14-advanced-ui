@@ -36,10 +36,18 @@ header {
 .js #store {
   position: absolute;
   width: 100%;
+  transition: transform 0.5s;
 }
 
 .js #store.moved {
   left: 80%;
+}
+
+@supports(transform: translateX(80%)) {
+  .js #store.moved {
+    left: 0;
+    transform: translateX(80%);
+  }
 }
 
 #products {
