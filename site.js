@@ -4,9 +4,17 @@
 /*
   Add-to-cart callbacks, logic, calculations, and events
 */
+const cartUpdateEvent = new Event('cart-update');
+
 const store = document.querySelector('#store');
+const cart = document.querySelector('#cart');
 
 store.addEventListener('click', handleAddToCartButtonClicks);
+
+cart.addEventListener('cart-update', function() {
+  console.log('OMG the cart has been updated! Now we can do something!');
+});
+
 
 function handleAddToCartButtonClicks(event) {
   const button = event.target;
@@ -58,6 +66,9 @@ function handleAddToCartButtonClicks(event) {
 
 */
   cartList.appendChild(lineItem);
+
+  cart.dispatchEvent(cartUpdateEvent);
+
 }
 
 
