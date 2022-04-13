@@ -11,9 +11,16 @@ store.addEventListener('click', handleAddToCartButtonClicks);
 function handleAddToCartButtonClicks(event) {
   const button = event.target;
   if (button.tagName !== 'BUTTON') return;
+
+  const cart = document.querySelector('#cart');
+  const cartList = cart.querySelector('#cart-items');
+  const cartItemTemplate = cart.querySelector('template#line-item');
+
+  const lineItem = cartItemTemplate.content.cloneNode(true);
+
+  /* Build out itemData */
   const item = button.parentElement;
   const itemData = {}
-  console.log(item.dataset); // LI
 
   for (var key in item.dataset) {
     itemData[key] = item.dataset[key];
@@ -21,7 +28,36 @@ function handleAddToCartButtonClicks(event) {
 
   itemData.name = item.querySelector('h3').innerText;
 
-  console.log(itemData);
+  /* Attach itemData to lineItem template */
+
+  const li = lineItem.querySelector('li[data-id]');
+  const quantity = 3;
+  li.dataset.id = itemData.id;
+  li.dataset.quantity = quantity;
+  li.dataset.price = itemData.price;
+
+  li.querySelector('.name output').innerText = itemData.name;
+  li.querySelector('.quantity output').innerText = quantity;
+  li.querySelector('.price output').innerText = formatCurrency(itemData.price);
+  li.querySelector('.total output').innerText =
+    formatCurrency(itemData.price * quantity);
+
+  li.querySelector('input[type="hidden"]').value = itemData.id + ',' + quantity;
+
+
+/*
+<li data-id="" data-quantity="" data-price="">
+  <ul>
+    <li class="name"><b>Item:</b> <output></output></li>
+    <li class="quantity"><b>Count:</b> <output></output></li>
+    <li class="price"><b>Unit Price:</b> <output></output></li>
+    <li class="total"><b>Unit Total:</b> <output></output></li>
+    <input type="hidden" name="item" value="[data-id],[data-quantity]" />
+  </ul>
+</li>
+
+*/
+  cartList.appendChild(lineItem);
 }
 
 
