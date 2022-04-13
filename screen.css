@@ -7,3 +7,63 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 /* stylelint-enable */
 
 /* Begin site styles below */
+* {
+  box-sizing: border-box;
+}
+html {
+  background: #EEE;
+  color: #333;
+  font-family: Trebuchet, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 24px;
+}
+
+header {
+  padding: 12px;
+}
+
+#store {
+  padding: 12px;
+  color: inherit;
+  background: inherit;
+}
+
+#products {
+  display: grid;
+  grid-gap: 6px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+#products > li {
+  padding: 12px;
+  border: 1px solid #CCC;
+  display: flex;
+  height: 100%;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#products > li > * {
+  flex: 0 0 auto;
+}
+
+#products > li > p {
+  flex: 1 0 auto;
+  padding: 12px 0 24px 0;
+}
+
+#products > li > button {
+  align-self: flex-end;
+}
+
+#cart {
+  background: #333;
+  color: #EEE;
+  padding: 12px;
+}
+
+#cart h3,
+#cart ol {
+  margin-bottom: 12px;
+}
