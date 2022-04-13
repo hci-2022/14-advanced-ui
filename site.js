@@ -26,7 +26,8 @@ function formatCurrency(wholeUnitValue) {
   var currencySymbol = '$';
   var humanAmount = wholeUnitValue + "";
   if (humanAmount.length < 3) {
-    currencySymbol = '$0';
+    currencySymbol = '¢';
+    return humanAmount + currencySymbol;
   }
   humanAmount = humanAmount.replace(/(\d\d)$/, '.$1');
   return currencySymbol + humanAmount;
