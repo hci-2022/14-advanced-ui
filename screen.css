@@ -99,6 +99,16 @@ header {
     display: grid;
     grid-template-columns: 2fr 1fr;
   }
+  .js main {
+    position: static;
+    overflow-x: auto;
+  }
+  .js #store {
+    position: static;
+  }
+  .js #store.moved {
+    transform: translateX(0);
+  }
   #cart {
     margin-top: 36px;
   }
