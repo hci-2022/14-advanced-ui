@@ -104,5 +104,7 @@ function formatCurrency(wholeUnitValue) {
 const cartButton = document.querySelector('a[href="#cart"]');
 
 cartButton.addEventListener('click', function(event) {
+  event.preventDefault();
   console.log('Cart button clicked!');
+  document.querySelector('#store').classList.toggle('moved');
 });

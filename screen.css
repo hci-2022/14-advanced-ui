@@ -18,6 +18,11 @@ html {
   line-height: 24px;
 }
 
+.js main {
+  position: relative;
+  overflow-x: hidden;
+}
+
 header {
   padding: 12px;
 }
@@ -30,6 +35,10 @@ header {
 
 .js #store {
   position: absolute;
+}
+
+.js #store.moved {
+  left: 80%;
 }
 
 #products {
@@ -64,6 +73,11 @@ header {
   background: #333;
   color: #EEE;
   padding: 12px;
+}
+
+.js #cart {
+  min-height: 800px;
+  min-height: 90vh;
 }
 
 #cart h3,
