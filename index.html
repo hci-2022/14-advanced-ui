@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="nojs">
 <head>
   <title>Slideover</title>
   <meta charset="utf-8" />
@@ -8,21 +8,103 @@
 </head>
 <body>
   <header>
-    <h1>A Page of Content</h1>
+    <h1>The Fancy Store</h1>
     <a href="#cart">Cart</a>
   </header>
   <main>
-    <article id="main">
-      <h2>I am the primary content</h2>
-      <p>
-        Say, a store front of products or something.
-      </p>
+    <article id="store">
+      <h2>Products</h2>
+      <ul id="products">
+        <li data-id="widget-a" data-price="3579">
+          <h3>Widget A</h3>
+          <b>$35.79</b>
+          <p>A handsome widget for all of your widget needs.</p>
+          <button type="button">Add to Cart</button>
+          <!--
+            NOTE: In JavaScript-less, server backed setting, the Add to Cart buttons would look
+            initially like this (JavaScript would restructure them as `type="button"`):
+
+              <button type="submit" form="cart-form" name="item" value="widget-a,1">
+                Add to Cart Now
+              </button>
+
+            Compare the `name` and `value` attributes on that <button> element to the hidden <input>
+            elements in the cart form below (spoiler: they're identical).
+
+            That would trigger the form#cart-form to be submitted, and the server would keep track
+            of a user's cart, rather than JavaScript. Splitting a string into an array is a basic
+            feature of any modern server-side language. It's also a basic feature of JavaScript. For
+            example:
+
+            // JavaScript
+            var item = "widget-a,1";
+            item = item.split(","); // ['widget-a', '1']
+
+            // From there, you could build an array or even an object of all item IDs and their
+            // quantities for a given customer.
+          -->
+        </li>
+        <li data-id="widget-b" data-price="5826">
+          <h3>Widget B</h3>
+          <b>$58.26</b>
+          <p>Another beautiful handcrafted widget.</p>
+          <button type="button">Add to Cart</button>
+        </li>
+      </ul>
+
     </article>
     <aside id="cart">
-      <h2>I am supporting content</h2>
-      <p>
-        I could be a cart with line items and price totals. Or whatever.
-      </p>
+      <h2>Your Cart</h2>
+      <form id="cart-form" name="cart-form" action="#null">
+        <!--
+          The <output> element: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+
+          Note that this form's only inputs are hidden ones, and that they will pass along a comma-
+          separated string with the ID of a product and its quantity. The server should of course
+          have an authoritative, non user-modifiable price for each product of a particular ID,
+          so we don't even need to send that information along.
+        -->
+        <h3 class="status">Your cart is empty.</h3>
+        <ol id="cart-items">
+          <!--
+            The <template> element:
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+          -->
+          <template id="line-item">
+            <li data-id="" data-quantity="" data-price="">
+              <ul>
+                <li class="name"><b>Item:</b> <output></output></li>
+                <li class="quantity"><b>Count:</b> <output></output></li>
+                <li class="price"><b>Unit Price:</b> <output></output></li>
+                <li class="total"><b>Unit Total:</b> <output></output></li>
+                <input type="hidden" name="item" value="[data-id],[data-quantity]" />
+              </ul>
+            </li>
+          </template>
+
+        </ol>
+        <ol id="cart-calculations">
+          <li id="cart-subtotal">
+            <ul>
+              <li class="name">Subtotal</li>
+              <li class="total" data-sub-total="0"><output>$0.00</output></li>
+            </ul>
+          </li>
+          <li id="cart-taxes">
+            <ul>
+              <li class="name" data-tax="625">IL Sales Tax (<b>6.25%</b>)</li>
+              <li class="total" data-tax-total="0"><output>$0.00</output></li>
+            </ul>
+          </li>
+          <li id="cart-totals">
+            <ul>
+              <li class="name">Cart Total</li>
+              <li class="total" data-cart-total="0"><output>$0.00</output></li>
+            </ul>
+          </li>
+        </ol>
+        <button type="submit">Checkout</button>
+      </form>
     </aside>
   </main>
   <script src="site.js"></script>
