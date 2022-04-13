@@ -22,6 +22,11 @@ function lineItemSubtotal(wholeUnitPrice, quantity) {
 
 }
 
+// calulatePercentage(1250,6.25);
+function calculatePercentage(wholeUnitValue, percentage) {
+  return Math.round(wholeUnitValue * (percentage / 100));
+}
+
 function formatCurrency(wholeUnitValue) {
   var currencySymbol = '$';
   var humanAmount = wholeUnitValue + "";
